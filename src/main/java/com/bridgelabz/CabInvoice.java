@@ -8,7 +8,7 @@ public class CabInvoice {
 
     public double calculateFare(double distance, double time) {
         double fare = distance * COST_PER_KM + time * COST_PER_MIN;
-        if (fare < 5)
+        if (fare < MINIMUM_FARE)
             fare = MINIMUM_FARE;
 
         return fare;
