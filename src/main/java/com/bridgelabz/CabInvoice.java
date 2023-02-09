@@ -13,4 +13,19 @@ public class CabInvoice {
 
         return fare;
     }
+
+    public double calculateFare(Ride[] rideArray) {
+        double totalFare = 0;
+        for (Ride ride : rideArray) {
+            totalFare += calculateFare(ride.distance, ride.time);
+        }
+        return totalFare;
+    }
+
+    public Invoice generateInvoice(Ride[] rideArray) {
+        double totalFare = calculateFare(rideArray);
+        int totalRides = rideArray.length;
+        double avgFare = totalFare / totalRides;
+        return new Invoice(totalFare, totalRides, avgFare);
+    }
 }

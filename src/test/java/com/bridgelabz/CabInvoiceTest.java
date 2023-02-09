@@ -20,4 +20,19 @@ public class CabInvoiceTest {
         double actualFare = cabInvoice.calculateFare(0.1, 0.5);
         Assertions.assertEquals(5, actualFare);
     }
+
+    @Test
+    void givenNumberOfRidesShouldReturnTotalFare() {
+        Ride[] arr = {new Ride(2.0, 5.0), new Ride(3.0, 7.0), new Ride(0.1, 0.3)};
+        double fare1 = cabInvoice.calculateFare(arr);
+        Assertions.assertEquals(67, fare1);
+    }
+
+    @Test
+    void givenMultipleRidesShouldReturnInvoice() {
+        Ride[] arr = {new Ride(2.0, 5.0), new Ride(3.0, 7.0), new Ride(0.1, 0.3)};
+        Invoice actualInvoice = cabInvoice.generateInvoice(arr);
+        Invoice expectedInvoice = new Invoice(67.0, 3, 67.0 / 3);
+        Assertions.assertEquals(expectedInvoice, actualInvoice);
+    }
 }
