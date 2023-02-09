@@ -17,7 +17,7 @@ public class CabInvoice {
     public double calculateFare(Ride[] rideArray) {
         double totalFare = 0;
         for (Ride ride : rideArray) {
-            totalFare += calculateFare(ride.distance, ride.time);
+            totalFare = totalFare + calculateFare(ride.distance, ride.time);
         }
         return totalFare;
     }
